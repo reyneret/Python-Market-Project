@@ -1,61 +1,78 @@
-applePrice = 10_000
-orangePrice = 15_000
-grapePrice = 20_000
+# BASE VALUES
+fruitList = [
+    #product_name, price, stock
+    ["apple", 10_000, 12],
+    ["orange", 15_000, 6],
+    ["grape", 20_000, 3]
+]
 
-appleStock = 12
-orangeStock = 6
-grapeStock = 3
+#========================================
+print("""
+=============================
+PASAR BUAH PITON
+=============================
+
+Menu:
+1. Daftar buah
+2. Tambah buah
+3. Hapus buah
+4. Beli buah
+5. Keluar program\n
+""")
+selectMenu = int(input("Masukkan nomor menu: "))
 
 appleQty = int(input("Masukkan jumlah apel: "))
-if appleQty <= appleStock:
+if appleQty <= fruitList[0][2]:
     print(f"Mengambil {appleQty} apel.")
-    appleStock -= appleQty
-    print(f"Sekarang stok apel ada {appleStock} buah.")
+    fruitList[0][2] -= appleQty
+    print(f"Sekarang stok apel ada {fruitList[0][2]} buah.")
 else:
-    while appleQty > appleStock:
-        print(f"Stok apel tidak cukup. Apel hanya tersedia {appleStock} buah.")
+    while appleQty > fruitList[0][2]:
+        print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[0][2]} buah.")
         appleQty = int(input("Masukkan jumlah apel: "))
     print(f"Mengambil {appleQty} apel.")
-    appleStock -= appleQty
-    print(f"Sekarang stok apel ada {appleStock} buah.")
+    fruitList[0][2] -= appleQty
+    print(f"Sekarang stok apel ada {fruitList[0][2]} buah.")
 
 orangeQty = int(input("Masukkan jumlah jeruk: "))
-if orangeQty <= orangeStock:
+if orangeQty <= fruitList[1][2]:
     print(f"Mengambil {orangeQty} apel.")
-    orangeStock -= orangeQty
-    print(f"Sekarang stok apel ada {orangeStock} buah.")
+    fruitList[1][2] -= orangeQty
+    print(f"Sekarang stok apel ada {fruitList[1][2]} buah.")
 else:
-    while orangeQty > orangeStock:
-        print(f"Stok apel tidak cukup. Apel hanya tersedia {orangeStock} buah.")
+    while orangeQty > fruitList[1][2]:
+        print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[1][2]} buah.")
         orangeQty = int(input("Masukkan jumlah apel: "))
     print(f"Mengambil {orangeQty} apel.")
-    orangeStock -= orangeQty
-    print(f"Sekarang stok apel ada {orangeStock} buah.")
+    fruitList[1][2] -= orangeQty
+    print(f"Sekarang stok apel ada {fruitList[1][2]} buah.")
 
 grapeQty = int(input("Masukkan jumlah anggur: "))
-if grapeQty <= grapeStock:
+if grapeQty <= fruitList[2][2]:
     print(f"Mengambil {grapeQty} apel.")
-    grapeStock -= grapeQty
-    print(f"Sekarang stok apel ada {grapeStock} buah.")
+    fruitList[2][2] -= grapeQty
+    print(f"Sekarang stok apel ada {fruitList[2][2]} buah.")
 else:
-    while grapeQty > grapeStock:
-        print(f"Stok apel tidak cukup. Apel hanya tersedia {grapeStock} buah.")
+    while grapeQty > fruitList[2][2]:
+        print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[2][2]} buah.")
         grapeQty = int(input("Masukkan jumlah apel: "))
     print(f"Mengambil {grapeQty} apel.")
-    grapeStock -= grapeQty
-    print(f"Sekarang stok apel ada {grapeStock} buah.")
+    fruitList[2][2] -= grapeQty
+    print(f"Sekarang stok apel ada {fruitList[2][2]} buah.")
 
-totalPriceApple = appleQty * applePrice
-totalPriceOrange = orangeQty * orangePrice
-totalPriceGrape = grapeQty * grapePrice
+
+totalPriceApple = appleQty * fruitList[0][1]
+totalPriceOrange = orangeQty * fruitList[1][1]
+totalPriceGrape = grapeQty * fruitList[2][1]
 totalPrice = totalPriceApple+totalPriceOrange+totalPriceGrape
+
 
 print("\nDetail Belanja\n")
 print(f"Apel: {appleQty} x {applePrice} = {totalPriceApple}")
 print(f"Jeruk: {orangeQty} x {orangePrice} = {totalPriceOrange}")
 print(f"Anggur: {grapeQty} x {grapePrice} = {totalPriceGrape}")
-
 print(f"\nTotal: {totalPrice}\n")
+
 
 #Payment Feature (31 August 2026)
 print("-"*20)
