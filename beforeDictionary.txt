@@ -1,8 +1,9 @@
 # BASE VALUES
 fruitList = [
-    {"product_name": "Apel", "product_price": 10_000 , "product_stock": 12},
-    {"product_name": "Jeruk", "product_price": 15_000 , "product_stock": 6},
-    {"product_name": "Anggur", "product_price": 20_000 , "product_stock": 3},
+    #product_name, price, stock
+    ["Apel", 10_000, 12],
+    ["Jeruk", 15_000, 6],
+    ["Anggur", 20_000, 3]
 ]
 
 while True:
@@ -22,7 +23,7 @@ while True:
     selectMenu = int(input("Masukkan nomor menu: "))
     if selectMenu == 1:
         for i in range(0, len(fruitList)):
-            print(f"{fruitList[i]["product_name"]}   | Rp. {fruitList[i]["product_price"]}  | Stok: {fruitList[i]["product_stock"]}")
+            print(f"{fruitList[i][0]}   | Rp. {fruitList[i][1]}  | Stok: {fruitList[i][2]}")
         print()
 
         print("Menu")
@@ -67,55 +68,55 @@ while True:
         print(f"{delFruitName} berhasil dihapuskan dari daftar.")
     elif selectMenu == 4:
         appleQty = int(input("Masukkan jumlah apel: "))
-        if appleQty <= fruitList[0]["product_stock"]:
-            print(f"Mengambil {appleQty} buah.")
-            fruitList[0]["product_stock"] -= appleQty
-            print(f"Sekarang stok ada {fruitList[0]["product_stock"]} buah.")
+        if appleQty <= fruitList[0][2]:
+            print(f"Mengambil {appleQty} apel.")
+            fruitList[0][2] -= appleQty
+            print(f"Sekarang stok apel ada {fruitList[0][2]} buah.")
         else:
-            while appleQty > fruitList[0]["product_stock"]:
-                print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[0]["product_stock"]} buah.")
+            while appleQty > fruitList[0][2]:
+                print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[0][2]} buah.")
                 appleQty = int(input("Masukkan jumlah apel: "))
-            print(f"Mengambil {appleQty} buah.")
-            fruitList[0]["product_stock"] -= appleQty
-            print(f"Sekarang stok ada {fruitList[0]["product_stock"]} buah.")
+            print(f"Mengambil {appleQty} apel.")
+            fruitList[0][2] -= appleQty
+            print(f"Sekarang stok apel ada {fruitList[0][2]} buah.")
 
         orangeQty = int(input("Masukkan jumlah jeruk: "))
-        if orangeQty <= fruitList[1]["product_stock"]:
-            print(f"Mengambil {orangeQty} buah.")
-            fruitList[1]["product_stock"] -= orangeQty
-            print(f"Sekarang stok ada {fruitList[1]["product_stock"]} buah.")
+        if orangeQty <= fruitList[1][2]:
+            print(f"Mengambil {orangeQty} apel.")
+            fruitList[1][2] -= orangeQty
+            print(f"Sekarang stok apel ada {fruitList[1][2]} buah.")
         else:
-            while orangeQty > fruitList[1]["product_stock"]:
-                print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[1]["product_stock"]} buah.")
+            while orangeQty > fruitList[1][2]:
+                print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[1][2]} buah.")
                 orangeQty = int(input("Masukkan jumlah apel: "))
-            print(f"Mengambil {orangeQty} buah.")
-            fruitList[1]["product_stock"] -= orangeQty
-            print(f"Sekarang stok ada {fruitList[1]["product_stock"]} buah.")
+            print(f"Mengambil {orangeQty} apel.")
+            fruitList[1][2] -= orangeQty
+            print(f"Sekarang stok apel ada {fruitList[1][2]} buah.")
 
         grapeQty = int(input("Masukkan jumlah anggur: "))
-        if grapeQty <= fruitList[2]["product_stock"]:
-            print(f"Mengambil {grapeQty} buah.")
-            fruitList[2]["product_stock"] -= grapeQty
-            print(f"Sekarang stok ada {fruitList[2]["product_stock"]} buah.")
+        if grapeQty <= fruitList[2][2]:
+            print(f"Mengambil {grapeQty} apel.")
+            fruitList[2][2] -= grapeQty
+            print(f"Sekarang stok apel ada {fruitList[2][2]} buah.")
         else:
-            while grapeQty > fruitList[2]["product_stock"]:
-                print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[2]["product_stock"]} buah.")
+            while grapeQty > fruitList[2][2]:
+                print(f"Stok apel tidak cukup. Apel hanya tersedia {fruitList[2][2]} buah.")
                 grapeQty = int(input("Masukkan jumlah apel: "))
-        print(f"Mengambil {grapeQty} buah.")
-        fruitList[2]["product_stock"] -= grapeQty
-        print(f"Sekarang stok ada {fruitList[2]["product_stock"]} buah.")
+        print(f"Mengambil {grapeQty} apel.")
+        fruitList[2][2] -= grapeQty
+        print(f"Sekarang stok apel ada {fruitList[2][2]} buah.")
 
 
-        totalPriceApple = appleQty * fruitList[0]["product_price"]
-        totalPriceOrange = orangeQty * fruitList[1]["product_price"]
-        totalPriceGrape = grapeQty * fruitList[2]["product_price"]
+        totalPriceApple = appleQty * fruitList[0][1]
+        totalPriceOrange = orangeQty * fruitList[1][1]
+        totalPriceGrape = grapeQty * fruitList[2][1]
         totalPrice = totalPriceApple+totalPriceOrange+totalPriceGrape
 
 
         print("\nDetail Belanja\n")
-        print(f"Apel: {appleQty} x {fruitList[0]["product_price"]} = {totalPriceApple}")
-        print(f"Jeruk: {orangeQty} x {fruitList[1]["product_price"]} = {totalPriceOrange}")
-        print(f"Anggur: {grapeQty} x {fruitList[2]["product_price"]} = {totalPriceGrape}")
+        print(f"Apel: {appleQty} x {fruitList[0][1]} = {totalPriceApple}")
+        print(f"Jeruk: {orangeQty} x {fruitList[1][1]} = {totalPriceOrange}")
+        print(f"Anggur: {grapeQty} x {fruitList[2][1]} = {totalPriceGrape}")
         print(f"\nTotal: {totalPrice}\n")
 
 
