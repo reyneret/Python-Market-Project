@@ -5,6 +5,25 @@ fruitList = [
     {"product_name": "Anggur", "product_price": 20_000 , "product_stock": 3},
 ]
 
+def showFruits(targetList):
+    for i in range(len(targetList)):
+        print(f"{fruitList[i]["product_name"]}   | Rp. {fruitList[i]["product_price"]}  | Stok: {fruitList[i]["product_stock"]}")
+
+def addFruit(targetList, newFruitName, newFruitPrice, newFruitStock):
+    targetList.append({"product_name": newFruitName, "product_price": newFruitPrice, "product_stock": newFruitStock})
+
+def deleteFruit(targetList, fruitName):
+    clearRow = 0
+    while clearRow == 0:
+        for i in range(len(targetList)):
+            if targetList[i]["product_name"] == fruitName:
+                clearRow = i
+                targetList.pop(clearRow)
+                print("Buah berhasil dihapus dari daftar.")
+                return 0
+        print(f"{fruitName} tidak ada dalam daftar.")
+        fruitName = input("Masukkan kembali nama buah yang ingin dihapus: ")
+
 while True:
     print("""
     =============================
@@ -21,8 +40,7 @@ while True:
 
     selectMenu = int(input("Masukkan nomor menu: "))
     if selectMenu == 1:
-        for i in range(0, len(fruitList)):
-            print(f"{fruitList[i]["product_name"]}   | Rp. {fruitList[i]["product_price"]}  | Stok: {fruitList[i]["product_stock"]}")
+        showFruits(fruitList)
         print()
 
         print("Menu")
@@ -38,8 +56,7 @@ while True:
         fruitPrice = int(input(f"Masukkan harga {fruitName} (dalam Rp.): "))
         fruitQty = int(input(f"Masukkan jumlah stok {fruitName}: "))
 
-        newFruit = [fruitName, fruitPrice, fruitQty]
-        fruitList.append(newFruit)
+        addFruit(fruitList, fruitName, fruitPrice, fruitQty)
         print(f"{fruitName} berhasil ditambahkan ke daftar buah.")
 
         print("Menu")
@@ -53,18 +70,19 @@ while True:
     elif selectMenu == 3:
         delFruitName = input("Masukkan nama buah yang ingin dihapus: ")
         delFruitName = delFruitName.capitalize()
-        clearRow = 100000
-        while clearRow == 100000:
-            for i in range(len(fruitList)-1):
-                if delFruitName in fruitList[i]:
-                    clearRow = i
-                    break
-                else:
-                    print(f"{delFruitName} tidak ada dalam daftar.")
-                    delFruitName = input("Masukkan kembali nama buah yang ingin dihapus: ")
-                    delFruitName.capitalize()
-        fruitList.pop(clearRow)
-        print(f"{delFruitName} berhasil dihapuskan dari daftar.")
+
+        deleteFruit(fruitList, fruitName)
+        print("Buah berhasil dihapus.")
+        print()
+
+        print("Menu")
+        print("1. Kembali ke menu utama")
+        print("2. Keluar dari program\n")
+        selectMenu = int(input("Masukkan nomor menu: "))
+        if selectMenu == 1:
+            print("Kembali ke menu utama.")
+        else:
+            break
     elif selectMenu == 4:
         appleQty = int(input("Masukkan jumlah apel: "))
         if appleQty <= fruitList[0]["product_stock"]:
